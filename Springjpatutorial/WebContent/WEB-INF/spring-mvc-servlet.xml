@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:mvc="http://www.springframework.org/schema/mvc"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/data/jpa
+        http://www.springframework.org/schema/data/jpa/spring-jpa.xsd"
+        >
+    <mvc:annotation-driven />
+    <context:component-scan base-package="com.tutorial" />
+    <jpa:repositories base-package="com.tutorial.login.dao" />
+    <jpa:repositories base-package="com.tutorial.login.impl" />
+    <jpa:repositories base-package="com.tutorial.restcontroller" />
+    <jpa:repositories base-package="com.tutorial.model" />
+    <jpa:repositories base-package="com.tutorial.entity" />
+     <jpa:repositories base-package="com.tutorial.service" />
+     <jpa:repositories base-package="com.tutorial.repositories" />
+   <import resource="file:**/WebContent/WEB-INF/persistence.xml" />
+   
+   
+	<!-- Define EclipseLink JPA Vendor Adapter -->
+	<bean id="jpaVendorAdapter"
+		class="org.springframework.orm.jpa.vendor.EclipseLinkJpaVendorAdapter">
+		<property name="databasePlatform"
+			value="org.eclipse.persistence.platform.database.MySQLPlatform" />
+		<property name="generateDdl" value="false" />
+		<property name="showSql" value="true" />
+	</bean>
+
+   
+   
+</beans>
